@@ -3,7 +3,7 @@
 client_id = "67ffaa64217a1b4557a9cd7d70729833"
 name = "meta data editor"
 handle = "meta-data-editor-1"
-application_url = "https://rights-representatives-weapon-consists.trycloudflare.com"
+application_url = "https://interactions-agreement-red-marshall.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,20 +13,20 @@ automatically_update_urls_on_dev = true
 [webhooks]
 api_version = "2025-07"
 
-  [[webhooks.subscriptions]]
-  topics = [ "app/uninstalled" ]
-  uri = "/webhooks/app/uninstalled"
+[[webhooks.subscriptions]]
+topics = [ "app/uninstalled" ]
+uri = "/webhooks/app/uninstalled"
 
-  [[webhooks.subscriptions]]
-  topics = [ "app/scopes_update" ]
-  uri = "/webhooks/app/scopes_update"
+[[webhooks.subscriptions]]
+topics = [ "app/scopes_update" ]
+uri = "/webhooks/app/scopes_update"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products,read_products,write_orders,read_orders"
+scopes = "write_products,read_products"
 
 [auth]
-redirect_urls = ["https://rights-representatives-weapon-consists.trycloudflare.com/auth/callback", "https://rights-representatives-weapon-consists.trycloudflare.com/auth/shopify/callback", "https://rights-representatives-weapon-consists.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://interactions-agreement-red-marshall.trycloudflare.com/auth/callback", "https://interactions-agreement-red-marshall.trycloudflare.com/auth/shopify/callback", "https://interactions-agreement-red-marshall.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false
