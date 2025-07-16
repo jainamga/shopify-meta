@@ -49,9 +49,11 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       # 8. Deploys the application code to your App Service
+      # 8. Deploys the application code to your App Service
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          # Use the exact name of your App Service
           app-name: 'meta-data-editor-shopify-rg'
+          username: ${{ secrets.AZURE_WEBAPP_USERNAME }}
+          password: ${{ secrets.AZURE_WEBAPP_PASSWORD }}
           package: .
