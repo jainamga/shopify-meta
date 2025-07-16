@@ -934,7 +934,7 @@ export default function ProductImageAltTextEditor() {
         )}
 
         {actionData?.bulkGeneratedAndUpdated && (
-          <Banner status="success" title="Bulk Alt Text Generation and Update Complete">
+          <Banner status="success" title="Bulkk Alt Text Generation and Update Complete">
             <Text as="p">
               Successfully generated and updated alt text for {actionData.updatedCount} images.
               {actionData.errors && actionData.errors.length > 0 && (
