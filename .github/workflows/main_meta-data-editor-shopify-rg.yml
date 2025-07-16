@@ -1,9 +1,5 @@
-# This workflow builds a Docker container, runs migrations, and pushes the container to ACR.
-# The Azure App Service will automatically deploy the new image via webhook.
+name: Build and Deploy Node.js App to Azure
 
-name: Build and Deploy Container to Azure
-
-# Trigger this workflow on every push to the main branch
 on:
   push:
     branches: [ main ]
@@ -13,41 +9,33 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checks out your repository's code so the workflow can use it
       - name: 'Checkout Code'
         uses: actions/checkout@v4
 
-      # 2. Logs in to your Azure Container Registry using secrets
-      - name: 'Login to Azure Container Registry'
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ secrets.ACR_LOGIN_SERVER }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
-
-      # 3. Builds your Dockerfile and pushes the final image to your ACR
-      - name: 'Build and Push Docker Image'
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          # Make sure 'meta-data-editor' is the image name you set in the App Service
-          tags: ${{ secrets.ACR_LOGIN_SERVER }}/meta-data-editor:latest
-
-      # 4. Sets up Node.js just to run the migration command
-      - name: 'Setup Node.js'
+      - name: 'Set up Node.js version'
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      # 5. Installs dependencies needed for Prisma
-      - name: 'Install npm Dependencies'
+      - name: 'Install All Dependencies'
         run: npm ci
+      
+      - name: 'Build the Application'
+        run: npm run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      # 6. Runs database migrations against your production database
-      - name: 'Run Prisma Migrations'
+      - name: 'Prune Dev Dependencies'
+        run: npm prune --production
+
+      - name: 'Run Database Migrations'
         run: npx prisma migrate deploy
         env:
-          # This provides the database URL securely to this step only
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'meta-data-editor-shopify-rg'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
