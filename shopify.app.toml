@@ -3,7 +3,7 @@
 client_id = "67ffaa64217a1b4557a9cd7d70729833"
 name = "meta data editor"
 handle = "meta-data-editor-1"
-application_url = "https://interactions-agreement-red-marshall.trycloudflare.com"
+application_url = "https://pm-grown-pays-inbox.trycloudflare.com"
 embedded = true
 
 [build]
@@ -26,7 +26,7 @@ uri = "/webhooks/app/scopes_update"
 scopes = "write_products,read_products"
 
 [auth]
-redirect_urls = ["https://interactions-agreement-red-marshall.trycloudflare.com/auth/callback", "https://interactions-agreement-red-marshall.trycloudflare.com/auth/shopify/callback", "https://interactions-agreement-red-marshall.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://pm-grown-pays-inbox.trycloudflare.com/auth/callback", "https://pm-grown-pays-inbox.trycloudflare.com/auth/shopify/callback", "https://pm-grown-pays-inbox.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false
