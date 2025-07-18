@@ -19,9 +19,9 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>A short heading about [your app]</h1>
+        <h1 className={styles.heading}>AI-Powered Product Meta Data Editor</h1>
         <p className={styles.text}>
-          A tagline about [your app] that describes your value proposition.
+          Automatically generate SEO-optimized alt text and metadata for your product images using advanced AI technology.
         </p>
         {showForm && (
           <Form className={styles.form} method="post" action="/auth/login">
@@ -31,25 +31,22 @@ export default function App() {
               <span>e.g: my-shop-domain.myshopify.com</span>
             </label>
             <button className={styles.button} type="submit">
-              Log in
+              Install App
             </button>
           </Form>
         )}
         <ul className={styles.list}>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>AI-Generated Alt Text</strong>. Automatically create SEO-optimized alt text for product images using Azure OpenAI.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Bulk Processing</strong>. Process multiple product images at once to save time and ensure consistency.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Performance Optimized</strong>. Improve your store's accessibility and search engine rankings with quality metadata.
           </li>
         </ul>
       </div>
     </div>
   );
-}
+  }
