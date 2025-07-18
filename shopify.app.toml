@@ -1,16 +1,15 @@
-# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
-
 client_id = "67ffaa64217a1b4557a9cd7d70729833"
 name = "meta data editor"
 handle = "meta-data-editor-1"
-application_url = "https://hats-recommended-micro-pursue.trycloudflare.com"
+application_url = "https://combining-literature-docs-pearl.trycloudflare.com"
 embedded = true
 
 [build]
 include_config_on_deploy = true
 automatically_update_urls_on_dev = true
+
 [webhooks]
-api_version = "2025-07"
+api_version = "2024-10"
 
 [[webhooks.subscriptions]]
 topics = [ "app/uninstalled" ]
@@ -20,24 +19,15 @@ uri = "/webhooks/app/uninstalled"
 topics = [ "app/scopes_update" ]
 uri = "/webhooks/app/scopes_update"
 
-# GDPR Compliance Webhooks (REQUIRED for public apps)
 [[webhooks.subscriptions]]
-topics = [ "customers/data_request" ]
-uri = "/webhooks/customers/data_request"
-
-[[webhooks.subscriptions]]
-topics = [ "customers/redact" ]
-uri = "/webhooks/customers/redact"
-
-[[webhooks.subscriptions]]
-topics = [ "shop/redact" ]
-uri = "/webhooks/shop/redact"
+compliance_topics = [ "customers/data_request", "customers/redact", "shop/redact" ]
+uri = "/webhooks/gdpr"
 
 [access_scopes]
-# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products,read_products"
 
 [auth]
-redirect_urls = ["https://hats-recommended-micro-pursue.trycloudflare.com/auth/callback", "https://hats-recommended-micro-pursue.trycloudflare.com/auth/shopify/callback", "https://hats-recommended-micro-pursue.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://combining-literature-docs-pearl.trycloudflare.com/auth/callback", "https://combining-literature-docs-pearl.trycloudflare.com/auth/shopify/callback", "https://combining-literature-docs-pearl.trycloudflare.com/api/auth/callback"]
+
 [pos]
 embedded = false
